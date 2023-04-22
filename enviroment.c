@@ -16,6 +16,33 @@ int _uEnvim(forn *fort)
 }
 
 
+/**
+ * _mEnvim - Gets the value of a variable environment
+ *
+ * @fort: Structure that contain the potential arguments.
+ * 	   Used to maintain the constant prototype funtion
+ * @jina: Environment variable name.
+ *
+ * Return: The value
+ *
+ */
+
+int _mEnvim(forn *fort, const char *jina)
+{
+	lines *nod = fort -> env;
+	char *z;
+
+	while (nod)
+	{
+		z = starts_with(nod -> stng, jina);
+		if (z && *z)
+			return  (z);
+		nod = node -> next;
+	}
+	return (NULL);
+}
+
+
 
 /**
  * setEnv - Initialize a new environment variable 

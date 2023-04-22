@@ -29,13 +29,13 @@
 #define HISTO_MAX 4096
 #define HISTO_FILE ".shell_history"
 
-extern char **environ;
+extern char **envm;
 
 /**
  * struct list_st - singly linked list
  * @ne; the number field
  * @stng: a string
- * @z: points to the next node
+ * @next points to the next node
  *
  */
 
@@ -43,7 +43,7 @@ typedef struct list_st
 {
 	int ne;
 	char *stng;
-	struct listst *next;
+	struct list_st *next;
 }lines;
 
 
@@ -62,7 +62,7 @@ typedef struct list_st
  * @error_Num: the error code for exit()s
  * @count_flag: if it count this line of input
  * @fname: the program filename
- * @envi: linked list local copy of environ
+ * @env: linked list local copy of environ
  * @envm: custom modified copy of environ from LL env
  * @history: the history node
  * @alias: the alias node
@@ -94,6 +94,7 @@ typedef struct pas
 	int tcount;
 }forn
 
+
 #define INFO_INIT \
 {NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \
 		0, 0, 0}
@@ -106,12 +107,19 @@ typedef struct pas
 typedef struct bu_in
 {
 	char *type;
-	int (*func)(forn *);
+	int (*function)(forn *);
 } in_ta
 
 int _exit(forn *);
 int _sh(forn *);
 int _helper(forn *);
+
+
+char *_mEnvim(forn *, const char *);
+int _uEnvim(forn *);
+int setEnv(forn *);
+int unSetEnv(forn *);
+int envPop(forn *);
 
 int hsh(forn *, char **);
 int d_build(forn *);
@@ -162,15 +170,6 @@ void sigintHandler(int);
 void clear_info(forn *);
 void set_info(forn *, char **);
 void free_info(info_t *, int);
-
-
-
-char *_getenv(forn *, const char *);
-int _myenv(forn *);
-int _mysetenv(forn *);
-int _myunsetenv(forn*);
-int populate_env_list(forn *);
-
 
 
 char **get_environ(forn *);
