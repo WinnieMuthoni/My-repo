@@ -4,7 +4,7 @@
 
 /**
  *
- * strchr - Locates a character in a string
+ * *strchr - Locates a character in a string
  *
  * @n: string to be parsed
  * @q: The character to look for
@@ -29,7 +29,7 @@ char *strchr(char *n, char q)
 
 /**
  *
- * strncat - Concatenates two strings
+ * *strncat - Concatenates two strings
  *
  * @sor: The first string
  * @stin: The second string
@@ -39,7 +39,7 @@ char *strchr(char *n, char q)
  *
  */
 
-char strncat( char *sor, char *stin, int z)
+char *strncat( char *sor, char *stin, int z)
 {
 	int y, k;
 
@@ -56,5 +56,40 @@ char strncat( char *sor, char *stin, int z)
 	}
 	if (k < z)
 		sor[y] = '\0';
+	return (n);
+}
+
+
+/**
+ *
+ * *strncopy - copies a string
+ * @sor: The destination to where the string is copied to
+ * @stin: The source string
+ * @z: The amount of character to be copied
+ *
+ * Return: The copied string
+ *
+ */
+
+char *strncopy(char *sor, char *stin, int z)
+{
+	int y, k;
+	char *n = sor;
+
+	y = 0;
+	while(stin[y] != '\0' && y < z - 1)
+	{
+		sor[y] = stin[y];
+		y++;
+	}
+	if (y < z)
+	{
+		k = y;
+		while (k < z)
+		{
+			sor[k] = '\0';
+			k++;
+		}
+	}
 	return (n);
 }
