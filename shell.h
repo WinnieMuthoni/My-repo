@@ -121,11 +121,18 @@ int setEnv(forn *);
 int unSetEnv(forn *);
 int envPop(forn *);
 
+char *strncat(char *, char *, int);
+char *strncopy(char *, char *, int);
+char *strchar(char *, char);
+
+char **_Enviro(forn *);
+int _unSetEnviro(forn *, char *);
+int _setEnviro(forn *, char *, char *);
+
 int hsh(forn *, char **);
 int d_build(forn *);
 void find_cmd(forn *);
 void fork_cmd(forn *);
-
 
 
 int is_cmd(forn *, char *);
@@ -144,9 +151,7 @@ char *_strcpy(char *, char *);
 char *_strdup(const char *);
 void _puts(char *);
 int _putchar(char);
-char *_strncpy(char *, char *, int);
-char *_strncat(char *, char *, int);
-char *_strchr(char *, char);
+
 char **strtow(char *, char *);
 char **strtow2(char *, char);
 char *_memset(char *, char, unsigned int);
@@ -172,9 +177,7 @@ void set_info(forn *, char **);
 void free_info(info_t *, int);
 
 
-char **get_environ(forn *);
-int _unsetenv(forn *, char *);
-int _setenv(forn *, char *, char *);
+
 char *get_history_file(forn *fort);
 int write_history(forn *fort);
 int read_history(forn *fort);
