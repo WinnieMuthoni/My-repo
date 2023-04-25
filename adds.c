@@ -28,30 +28,30 @@ char **list_to_strings(lines *head)
 {
 	lines *node = head;
 	size_t i = list_len(head), j;
-	char **strs;
-	char *str;
+	char **stng;
+	char *strs;
 
 	if (!head || !i)
 		return (NULL);
-	strs = malloc(sizeof(char *) * (i + 1));
-	if (!strs)
+	stng = malloc(sizeof(char *) * (i + 1));
+	if (!stng)
 		return (NULL);
 	for (i = 0; node; node = node->next, i++)
 	{
-		str = malloc(_strlen(node->str) + 1);
-		if (!str)
+		strs = malloc(_strlen(node->strs) + 1);
+		if (!strs)
 		{
 			for (j = 0; j < i; j++)
-				free(strs[j]);
-			free(strs);
+				free(stng[j]);
+			free(stng);
 			return (NULL);
 		}
 
-		str = _strcpy(str, node->str);
-		strs[i] = str;
+		strs = _strcpy(strs, node->strs);
+		stng[i] = strs;
 	}
-	strs[i] = NULL;
-	return (strs);
+	stng[i] = NULL;
+	return (stng);
 }
 
 
@@ -88,12 +88,12 @@ size_t print_list(const lines *h)
  */
 lines *node_starts_with(lines *node, char *prefix, char c)
 {
-	char *p = NULL;
+	char *z = NULL;
 
 	while (node)
 	{
-		p = starts_with(node->str, prefix);
-		if (p && ((c == -1) || (*p == c)))
+		z = starts_with(node->str, prefix);
+		if (z && ((c == -1) || (*z == c)))
 			return (node);
 		node = node->next;
 	}
