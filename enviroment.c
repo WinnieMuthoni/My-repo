@@ -3,13 +3,13 @@
 
 
 /**
- * _uEnvim - prints the current Environment
+ * _myenv - prints the current Environment
  * @fort: Structure that contains arguments.
  * 	  Used to maintain the constants prototype functions
  * Return: 0 Always
  *
  */
-int _uEnvim(forn *fort)
+int _myenv(forn *fort)
 {
 	print_list_st(fort ->env;);
 	return (0);
@@ -17,7 +17,7 @@ int _uEnvim(forn *fort)
 
 
 /**
- * _mEnvim - Gets the value of a variable environment
+ * _getenv - Gets the value of a variable environment
  *
  * @fort: Structure that contain the potential arguments.
  * 	   Used to maintain the constant prototype funtion
@@ -27,7 +27,7 @@ int _uEnvim(forn *fort)
  *
  */
 
-int _mEnvim(forn *fort, const char *jina)
+int *_getenv(forn *fort, const char *jina)
 {
 	lines *nod = fort -> env;
 	char *z;
@@ -45,7 +45,7 @@ int _mEnvim(forn *fort, const char *jina)
 
 
 /**
- * setEnv - Initialize a new environment variable 
+ * _setEnv - Initialize a new environment variable 
  * 	    or modify an existing one
  * @fort: Struture that contains potential arguments.
  * 	  Use to maintain constant prototype function
@@ -67,14 +67,14 @@ int _setEnv(forn *fort)
 
 
 /**
- * envPop - Populates the linked list of the environment
+ * populate_env_list - Populates the linked list of the environment
  *
  * @fort: Struture that containts  the arguments.
  * 	  Used to maintain the constant prototype function.
  * Return: 0 Always
  *
  */
-int envPop(forn *fort)
+int populate_env_list(forn *fort)
 {
 	lines *nod = NULL;
 	size_t y;
@@ -88,14 +88,14 @@ int envPop(forn *fort)
 
 
 /**
- * unSetEnv - Removes an environment variable
+ * _unSetEnv - Removes an environment variable
  * @fort - Structure that contains the potential arguments.
  * 	   used to maintain constant prototype function
  * Return: 0 Always
  *
  */
 
-int unSetEnv(forn, *fort)
+int _unSetEnv(forn, *fort)
 {
 	int y;
 
