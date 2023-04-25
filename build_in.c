@@ -1,5 +1,27 @@
 #include "shell.h"
 
+
+
+/**
+ * _helper - changes the current directory of the process
+ * @fort: Contains potential arguments
+ *        Maintains onstants prototype functions.
+ * Return: 0 Always
+ *
+ */
+
+int _helper(forn *fort)
+{
+        char **ary;
+
+        ary = fort -> argv;
+        _puts("Helper, \n");
+        if (0)
+                _puts(*ary);
+        return (0)
+}
+
+
 /**
  * _exit - exits the shell
  * @fort: Contains potential arguments
@@ -76,27 +98,8 @@ int _dir_chng(forn *fort)
 	else
 	{
 		_setenvir(fort, "PWDOLD", _getenv(fort, "PWD = "));
-		_setenvir(fort, "PWD", getcdw(buff, 1024));
+		_setenvir(fort, "PWD", getcwd(buff, 1024));
 	}
 	return (0);
 }
 
-
-/**
- * _helper - changes the current directory of the process
- * @fort: Contains potential arguments
- * 	  Maintains onstants prototype functions.
- * Return: 0 Always
- *
- */
-
-int _helper(forn *fort)
-{
-	char **ary;
-
-	ary = fort -> argv;
-	_puts("Helper, \n");
-	if (0)
-		_puts(*ary);
-	return (0)
-}
