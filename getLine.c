@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * _buffPut - stores a chained command
+ * _input_buff - stores a chained command
  *
  * @fort: Struture containing the parametres
  * @buff: the address to the buffer
@@ -12,7 +12,7 @@
  *
  */
 
-ssize_t _buffPut(forn *fort, char **buff, size_t *tp)
+ssize_t _input_buff(forn *fort, char **buff, size_t *tp)
 {
 	ssize_t k = 0;
 	size_t tp_p = 0;
@@ -48,7 +48,7 @@ ssize_t _buffPut(forn *fort, char **buff, size_t *tp)
 }
 
 /**
- * find_put - gets a line minus the newline
+ * get_input - gets a line minus the newline
  * @fort: structure parametre
  *
  * Return: byte read
@@ -56,7 +56,7 @@ ssize_t _buffPut(forn *fort, char **buff, size_t *tp)
  */
 
 
-ssize_t find_put(forn *fort)
+ssize_t get_input(forn *fort)
 {
 	static char *buff;
 	static size_t y, l, tp;
@@ -87,7 +87,7 @@ ssize_t find_put(forn *fort)
 
 
 /**
- * buff_rd - reads a buffer
+ * read_buff - reads a buffer
  * @fort: parameter struct
  * @buff: buffer
  * @y: size
@@ -96,7 +96,7 @@ ssize_t find_put(forn *fort)
  */
 
 
-ssize_t buff_rd(forn *fort, char *buff, size_t *y)
+ssize_t read_buff(forn *fort, char *buff, size_t *y)
 {
 	ssize_t k = 0;
 
@@ -109,7 +109,7 @@ ssize_t buff_rd(forn *fort, char *buff, size_t *y)
 }
 
 /**
- * _toline - gets the next line of input from STDIN
+ * _getline - gets the next line of input from STDIN
  * @fort: parameter struct
  * @pointer: address of pointer to buffer, preallocated or NULL
  * @leth: size of preallocated ptr buffer if not NULL
@@ -118,7 +118,7 @@ ssize_t buff_rd(forn *fort, char *buff, size_t *y)
  */
 
 
-int _toline(forn *fort, char **pointer, size_t *leth)
+int _getline(forn *fort, char **pointer, size_t *leth)
 {
 	static char buff[READ_BUFF_SIZE];
 	static size_t y, length;
@@ -136,16 +136,16 @@ int _toline(forn *fort, char **pointer, size_t *leth)
 	if (m == -1 || (m == 0 && length == 0))
 		return (-1);
 
-	n = _strchar(buff + y, '\n');
+	n = _strchr(buff + y, '\n');
 	l = n ? 1 + (unsigned int)(n - buff) : length;
 	poin = _realloc(p, ch, ch ? ch + l : l + 1);
 	if (!poin) 
 		return (p ? free(p), -1 : -1);
 
 	if (ch)
-		_strcant(poin, buff + y, l - y);
+		_strncat(poin, buff + y, l - y);
 	else
-		_strcopy(poin, buff + y, l - y + 1);
+		_strcpy(poin, buff + y, l - y + 1);
 
 	ch += l - y;
 	y = l;
