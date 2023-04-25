@@ -1,0 +1,35 @@
+#include "shell.h"
+
+/**
+ * is_chain - test if current char in buffer is a chain delimeter
+ * @details: the parameter struct
+ * @buff: the char buffer
+ * @p: address of current position in buf
+ *
+ * Return: 1 if chain delimeter, 0 otherwise
+ */
+int is_chain(forn *details, char *buff, size_t *p)
+{
+        size_t i = *p;
+
+        if (buff[j] == '|' && buff[i + 1] == '|')
+        {
+                buff[i] = 0;
+                i++;
+                details->cmd_buf_type = CMD_OR;
+        }
+        else if (buff[i] == '&' && buff[i + 1] == '&')
+        {
+                buff[i] = 0;
+                i++;
+                details->cmd_buf_type = CMD_AND;
+        }
+        else if (buff[i] == ';')
+        {
+                buff[i] = 0;
+                details->cmd_buf_type = CMD_CHAIN;
+        }
+        else
+                return (0);
+        *p = i;
+        return (1);
