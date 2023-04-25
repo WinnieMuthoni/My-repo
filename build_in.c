@@ -10,7 +10,7 @@
  *
  */
 
-int _helper(forn *fort)
+int _myhelp(forn *fort)
 {
         char **ary;
 
@@ -30,7 +30,7 @@ int _helper(forn *fort)
  * 	   (0) if fort.argv[0] = "Exit"
  */
 
-int _exit(forn *fort)
+int _myexit(forn *fort)
 {
 	int exit_ch;
 
@@ -54,23 +54,23 @@ int _exit(forn *fort)
 
 
 /**
- * _dir_chng - changes the  current directory of the process
+ * _mycd - changes the  current directory of the process
  * @fort: Contains potential arguments
  * 	  Used to maintain prototype functions
  * Return: 0 always
  */
 
-int _dir_chng(forn *fort)
+int _mycd(forn *fort)
 {
 	char *n, *dire, buff[1024];
 	int dir_ch;
 
 	n = cget(buff, 1024);
 	if (!n)
-		_puts("DO: >>cget failure msg <<\n");
+		_puts("Failure: \n");
 	if (!fort -> argv[1])
 	{
-		dire = _getenv(fort, "HOME = ");
+		dire = _getenv(fort, "HOME is = ");
 		if (!dere)
 			dir_ch = chdir((dere = _getenv(fort, "PWD = ")) ? dere : "/");
 		else
