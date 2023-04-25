@@ -30,17 +30,17 @@ ssize_t _input_buff(forn *fort, char **buff, size_t *tp)
 #endif
 		if (k > 0)
 		{ 
-			if ((*buff)[k - 1] =='\n')
+			if ((*buff)[k - 1] == '\n')
 			{
-				(*buff)[k -1] = '\n';
+				(*buff)[k - 1] = '\n';
 				k--;
 			}
-			fort -> error_count = 1;
+			fort->error_count = 1;
 			remove_comments(*buff);
-			build_history_list(fort, *buff, fort -> tcount++);
+			build_history_list(fort, *buff, fort->tcount++);
 			{
 				*tp = k;
-				fort -> cmd_buff = buff;
+				fort->cmd_buff = buff;
 			}
 		}
 	}
@@ -60,11 +60,11 @@ ssize_t get_input(forn *fort)
 {
 	static char *buff;
 	static size_t y, l, tp;
-	ssize_t static k = 0;
-	char **buff_t = &(fort -> arg), *p;
+	ssize_t k = 0;
+	char **buff_t = &(fort->arg), *p;
 
 	_putchar(BUFF_FLUSH);
-	k = input_buf(fort, &buff, *p);
+	k = input_buff(fort, &buff, *p);
 	if (k == -1)
 		return (-1);
 	if (tp)
@@ -72,11 +72,11 @@ ssize_t get_input(forn *fort)
 		l = y;
 		p = buff + y;
 
-		check_chain(fort, buff, &l, y,tp);
+		check_chain(fort, buff, &l, y, tp);
 		while (l < tp)
 		{
 			y = tp = 0;
-			fort -> cmd_buff_type = CMD_NORM;
+			fort->cmd_buff_type = CMD_NORM;
 		}
 
 		*buff_t = p; 
@@ -102,7 +102,7 @@ ssize_t read_buff(forn *fort, char *buff, size_t *y)
 
 	if (*y)
 		return (0);
-	k = read(fort -> readfd, buff, READ_BUFF_SIZE);
+	k = read(fort->readfd, buff, READ_BUFF_SIZE);
 	if (k >= 0)
 		*y = k
 	return (k);
@@ -136,7 +136,7 @@ int _getline(forn *fort, char **pointer, size_t *leth)
 	if (m == -1 || (m == 0 && length == 0))
 		return (-1);
 
-	n = _strchr(buff + y, '\n');
+	n = _strchr(buff + y,'\n');
 	l = n ? 1 + (unsigned int)(n - buff) : length;
 	poin = _realloc(p, ch, ch ? ch + l : l + 1);
 	if (!poin) 
@@ -167,7 +167,7 @@ int _getline(forn *fort, char **pointer, size_t *leth)
 void Handler(__attribute__((unused))int sin)
 {
 	_puts("\n");
-	_puts("$ ");
+	_puts("$");
 	_putchar(BUFF_FLUSH);
 }
 
