@@ -19,9 +19,9 @@ int interactive(forn *fort)
 
 /**
  * is_delim - checks if character is a delimeter
- * 
+ *
  * @z: the char to check
- * 
+ *
  * @delimeta: the delimeter string
  * Return: 1 if true, 0 if false
  */
@@ -38,9 +38,9 @@ int is_delim(char z, char *delimeta)
 
 /**
  * _isalpha - checks for alphabetic character
- * 
+ *
  * @z: The character to input
- * 
+ *
  * Return: 1 if c is alphabetic, 0 otherwise
  */
 
@@ -57,9 +57,9 @@ int _isalpha(int z)
 
 /**
  * _atoi - converts a string to an integer
- * 
+ *
  * @k: the string to be converted
- * 
+ *
  * Return: 0 if no numbers in string, otherwise converted number
  */
 
@@ -89,7 +89,7 @@ int _atoi(char *k)
 	if (al == -1)
 		out_put = -res;
 	else
-		ou_tput = res;
+		out_put = res;
 
 	return (out_put);
 }
