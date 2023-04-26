@@ -184,7 +184,8 @@ int read_history(forn *fort);
 int build_history_list(forn *fort, char *buff, int linecount);
 int renumber_history(forn *fort);
 lines *add_node(lines **, const char *, int);
-lines *add_node_end(lines **, const char *, int);
+
+lines *add_node(lines **head, const char *str, int num);
 size_t print_list_str(const lines *);
 int delete_node_at_index(lines **, unsigned int);
 void free_list(lines **);
