@@ -24,7 +24,7 @@
 
 #define CONVERT_LOWERCASE 1
 #define CONVERT_UNSIGNED 2
-#define USE_GETLINE 0 
+#define USE_GETLINE 0
 #define USE_STRTOK 0
 #define HISTO_MAX 4096
 #define HISTO_FILE ".shell_history"
@@ -107,27 +107,27 @@ typedef struct pas
 typedef struct bu_in
 {
 	char *type;
-	int (*function)(forn *);
-} in_ta
+	int (*func)(forn *);
+}in_ta
 
 int _exit(forn *);
-int _sh(forn *);
-int _helper(forn *);
+int _cd(forn *);
+int _help(forn *);
 
 
-char *_mEnvim(forn *, const char *);
-int _uEnvim(forn *);
-int setEnv(forn *);
-int unSetEnv(forn *);
-int envPop(forn *);
+char *_getenv(forn *, const char *);
+int _myenv(forn *);
+int _mysetenv(forn *);
+int _myunsetenv(forn *);
+int populate_env_list(forn *);
 
-char *strncat(char *, char *, int);
-char *strncopy(char *, char *, int);
-char *strchar(char *, char);
+char *_strncat(char *, char *, int);
+char *_strncpy(char *, char *, int);
+char *_strchr(char *, char);
 
-char **_Enviro(forn *);
-int _unSetEnviro(forn *, char *);
-int _setEnviro(forn *, char *, char *);
+char **get_environ(forn *);
+int _unsetenv(forn *, char *);
+int _setenv(forn *, char *, char *);
 
 int hsh(forn *, char **);
 int d_build(forn *);
@@ -181,7 +181,7 @@ void free_info(info_t *, int);
 char *get_history_file(forn *fort);
 int write_history(forn *fort);
 int read_history(forn *fort);
-int build_history_list(forn *fort, char *buff, int linecount);
+int build_history_list(forn *fort, char *buff, int linec);
 int renumber_history(forn *fort);
 lines *add_node(lines **, const char *, int);
 lines *add_node_end(lines **, const char *, int);
