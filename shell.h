@@ -8,9 +8,9 @@
 #include <string.h>
 #include <errno.h>
 #include <fcntl.h>
-#include <syst/stat.h>
+#include <sys/stat.h>
 #include <limits.h>
-#include <sys/wait>
+#include <sys/wait.h>
 #include <sys/types.h>
 
 
@@ -90,9 +90,8 @@ typedef struct pas
 	lines *alias;
 	char **envm;
 	int env_h;
-	int status;
 	int tcount;
-}forn
+}forn;
 
 
 #define INFO_INIT \
@@ -108,9 +107,9 @@ typedef struct bu_in
 {
 	char *type;
 	int (*func)(forn *);
-}in_ta
+}in_ta;
 
-int _exit(forn *);
+int _mexit(forn *);
 int _cd(forn *);
 int _help(forn *);
 
@@ -174,7 +173,7 @@ int _getline(forn *, char **, size_t *);
 void sigintHandler(int);
 void clear_info(forn *);
 void set_info(forn *, char **);
-void free_info(info_t *, int);
+void free_info(forn *, int);
 
 
 
